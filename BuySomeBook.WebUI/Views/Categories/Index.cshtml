@@ -1,0 +1,80 @@
+﻿@using BuySomeBook.WebUI.ViewModels
+@using BuySomeBook.BOL.Entities
+@model AllProductVM
+<section class="shop_grid_area section-padding-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-3">
+                <div class="shop_sidebar_area">
+                    <div class="widget catagory mb-50">
+                        <h6 class="widget-title mb-30">Kategoriler</h6>
+                        <div class="catagories-menu">
+                            <ul id="menu-content2" class="menu-content collapse show">
+                                @foreach (Category item in Model.Categories.Where(w => w.ParentID == null))
+                                {
+                                    <li data-toggle="collapse" data-target="#@item.ID" class="collapsed">
+                                        <a href="#" style="text-transform:capitalize">@item.Name</a>
+                                        <ul class="sub-menu collapse" id="@item.ID">
+                                            <li><a href="#">Hepsi</a></li>
+                                            @foreach (Category item2 in item.Children)
+                                            {
+                                                <li><a href="#">@item2.Name</a></li>
+                                            }
+                                        </ul>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-8 col-lg-9">
+                <div class="shop_grid_product_area">
+                    <div class="row">
+                        @foreach (var item in Model.Products)
+                        {
+                            <div class="col-12 col-sm-6 col-lg-4">
+
+                                <div class="single-product-wrapper">
+                                    <div class="product-img">
+                                        <img src="@item.Pictures.FirstOrDefault(f=>f.PIndex==1).FPath" alt="">
+                                        <img class="hover-img" src="@item.Pictures.FirstOrDefault(f=>f.PIndex==2).FPath" alt="">
+                                        <div class="product-badge offer-badge">
+                                            <span>-30%</span>
+                                        </div>
+                                        <div class="product-favourite">
+                                            <a href="#" class="favme fa fa-heart"></a>
+                                        </div>
+                                    </div>
+                                    <div class="product-description">
+                                        <span>@item.Author.NameSurname</span>
+                                        <a href="single-product-details.html">
+                                            <h6>@item.Name</h6>
+                                        </a>
+                                        <p class="product-price"><span class="old-price">$75.00</span>@item.Price</p>
+                                        <div class="hover-content">
+                                            <div class="add-to-cart-btn">
+                                                <a href="#" class="btn essence-btn">Add to Cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <nav aria-label="navigation">
+                    <ul class="pagination mt-50 mb-70">
+                        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">...</a></li>
+                        <li class="page-item"><a class="page-link" href="#">10</a></li>
+                        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>

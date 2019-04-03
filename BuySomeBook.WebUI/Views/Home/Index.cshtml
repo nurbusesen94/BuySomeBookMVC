@@ -1,0 +1,145 @@
+﻿@using BuySomeBook.BOL.Entities
+@model IEnumerable<Product>
+<section class="welcome_area bg-img background-overlay" style="background-image: url(/Content/img/bg-img/bg-1.jpg);">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12">
+                        <div class="hero-content">
+                            <h6>asoss</h6>
+                            <h2>New Collection</h2>
+                            <a href="#" class="btn essence-btn">view collection</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+<section class="new_arrivals_area section-padding-80 clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading text-center">
+                    <h2>En Çok Satılanlar</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="popular-products-slides owl-carousel">
+                    @foreach (Product hbk in Model)
+                    {
+                        <div class="single-product-wrapper">
+                            <div class="product-img">
+                                <img src="@hbk.Pictures.FirstOrDefault(f=>f.PIndex==1).FPath" alt="@hbk.Name">
+                                <img class="hover-img" src="@hbk.Pictures.FirstOrDefault(f=>f.PIndex==2).FPath" alt="@hbk.Name">
+                                <div class="product-favourite">
+                                    <a href="#" class="favme fa fa-heart"></a>
+                                </div>
+                            </div>
+                            <div class="product-description">
+                                <span>@hbk.Author.NameSurname</span>
+                                <a href="@Url.Action("Index","SingleProduct",new {ID=hbk.ID })">
+                                    <h6>@hbk.Name</h6>
+                                </a>
+                                <p class="product-price">@hbk.Price</p>
+                                <div class="hover-content">
+                                    <div class="add-to-cart-btn">
+                                        <a href="#" class="btn essence-btn">Add to Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="top_catagory_area section-padding-80 clearfix">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(/Content/img/bg-img/grr3.jpg);">
+                    <div class="catagory-content">
+                        <a href="#" style="text-transform: capitalize; color:#2b2b2b">Ayın Yazarı</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(/Content/img/bg-img/68lmwd3r-1.png);">
+                    <div class="catagory-content">
+                        <a href="#" style="text-transform: capitalize; color:#2b2b2b">Ayın Yayınevi</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="new_arrivals_area section-padding-80 clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading text-center">
+                    <h2>Yeni Gelenler</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="popular-products-slides owl-carousel">
+
+                    @foreach (Product item in Model)
+                    {
+                        <div class="single-product-wrapper">
+                            <div class="product-img">
+                                <img src="@item.Pictures.FirstOrDefault(f=>f.PIndex==1).FPath" alt="@item.Name">
+                                <img class="hover-img" src="@item.Pictures.FirstOrDefault(f=>f.PIndex==2).FPath" alt="@item.Name">
+                                <div class="product-favourite">
+                                    <a href="#" class="favme fa fa-heart"></a>
+                                </div>
+                            </div>
+                            <div class="product-description">
+                                <span>@item.Author.NameSurname</span>
+                                <a href="@Url.Action("Index", "SingleProduct", new { ID = item.ID })">
+                                    <h6>@item.Name</h6>
+                                </a>
+                                <p class="product-price">@item.Price</p>
+                                <div class="hover-content">
+                                    <div class="add-to-cart-btn">
+                                        <a href="#" class="btn essence-btn">Add to Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        }
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="brands-area d-flex align-items-center justify-content-between">
+    <div class="single-brands-logo">
+        <img src="/Content/img/core-img/brand1.png" alt="">
+    </div>
+    <div class="single-brands-logo">
+        <img src="/Content/img/core-img/brand2.png" alt="">
+    </div>
+    <div class="single-brands-logo">
+        <img src="/Content/img/core-img/brand3.png" alt="">
+    </div>
+    <div class="single-brands-logo">
+        <img src="/Content/img/core-img/brand4.png" alt="">
+    </div>
+    <div class="single-brands-logo">
+        <img src="/Content/img/core-img/brand5.png" alt="">
+    </div>
+    <div class="single-brands-logo">
+        <img src="/Content/img/core-img/brand6.png" alt="">
+    </div>
+</div>
